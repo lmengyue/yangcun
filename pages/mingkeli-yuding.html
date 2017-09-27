@@ -1,0 +1,565 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+		<title>阳村</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css?5" />
+		<link rel="stylesheet" type="text/css" href="../css/head-footer.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../css/booking.css?1" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css" />
+		<!--	<link rel="stylesheet" type="text/css" href="../components/font-awesome/css/font-awesome.css" />	-->
+		<script src="../components/datepicker/WdatePicker.js" type="text/javascript"></script>
+
+		<style type="text/css">
+			body {
+				font-family: Microsoft YaHei;
+			}
+		</style>
+
+		<script type="text/javascript">
+		</script>
+	</head>
+
+	<body>
+		<div class="navbar-head" id="toTop">
+			<div class="container">
+				<div class="row">
+					<a href="index.html" target="_parent" class="col-xs-5 logo-img">
+						<img src="../img/index/logo_1.png" />
+					</a>
+					<div class="col-xs-7 nav-head">
+						<div class="row login-ok">
+							<div class="col-xs-4 col-xs-offset-8">
+								<span class="login">
+									<a href="pages/login.html?1" target="_parent" >登录</a>
+								</span>
+								<span class="t">|</span>
+								<span class="resgister">
+									<a href="pages/registered.html" target="_parent">注册</a>
+								</span>
+
+							</div>
+							<div class="nav-ul">
+								<ul class="col-xs-12 nav-li">
+									<li class="active offset">
+										<a href="../index.html" target="_parent">首页</a>
+									</li>
+									<li>
+										<a href="activ.html" target="_parent">走进阳村</a>
+									</li>
+									<li>
+										<a href="booking.html" target="_parent">民宿预订</a>
+									</li>
+									<li>
+										<a href="gift.html" target="_parent">伴手选礼</a>
+									</li>
+									<li>
+										<a href="news.html" target="_parent">新闻资讯</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="booking">
+			<div class="container">
+				<div class="row">
+					<ul class="col-xs-12 booking-ul">
+						<li class="home">
+							<a href="../index.html" target="_parent"></a>
+						</li>
+						<li>></li>
+						<li>民宿预订</li>
+						<li>></li>
+						<li>无锡鸣珂里桃花源精品酒店</li>
+					</ul>
+					<div class="col-xs-12 mingkeli">
+						<div class="mingkeli-box1-img">
+							<div class="img">
+								<img src="../img/index/msyd_web_02.jpg" style="display: block" />
+								<img src="../img/index/msyd_web_02.jpg" />
+							</div>
+							<div class="ltr">
+								<span class="left">&lt;</span>
+								<span class="right">&gt;</span>
+							</div>
+						</div>
+						<div class="mingkeli-box2-img">
+							<div class="box2-img">
+								<img src="../img/index/msyd2_web_05.jpg" class="img-right" />
+								<img src="../img/index/msyd2_web_07.jpg" />
+							</div>
+							<div class="box2-img">
+								<img src="../img/index/msyd2_web_11.jpg" class=" img-right" />
+								<img src="../img/index/msyd2_web_12.jpg" />
+							</div>
+							<div class="text-img">
+								<p>无锡鸣珂里桃花源精品酒店图片30张</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 mingkeli-type">
+						<ul class="mingkeli-type-time">
+							<li class="active">房型</li>
+							<li>民宿信息</li>
+							<li>民宿点评</li>
+							<li class="in">
+								<label>入住时间</label>
+								<input id="d5221" class="Wdate mini_w" type="text" size="10" value="" onFocus="var d5222=$dp.$('d5222');
+								WdatePicker({
+								onpicked:function()
+								{
+								    d5222.focus();
+								    oneDay();
+								    
+								},
+								   doubleCalendar:true, <!--//true双日历开启-->
+								    maxDate:'',<!--//最大日期-->
+								    minDate:'%y-%M-{%d}'
+								})" readonly="readonly" />
+							</li>
+							<li class="in go">
+								<label>离店时间</label>
+								<input id="d5222" style="color: #000;font-weight: 100" class="Wdate mini_w" type="text" size="10" value="" onFocus="WdatePicker
+                                ({
+								    minDate:'#F{$dp.$D(\'d5221\',{d:1})}',
+								    doubleCalendar:true,
+								    maxDate:'',
+								    onpicked:function()
+								    {
+								    	changeTime();
+								    }
+								})" readonly />
+
+							</li>
+							<li class="with">
+								共
+								<span class="day-time">1</span> 晚
+							</li>
+							<li class="confirm">
+								<a href="#">确认修改</a>
+							</li>
+						</ul>
+						<div class="Room-type-box">
+							<ul class="Room-type title">
+								<li></li>
+								<li>床型</li>
+								<li>早餐</li>
+								<li>宽带</li>
+								<li>取消政策</li>
+								<li>价格</li>
+							</ul>
+							<ul class="Room-type">
+								<li class="first">
+									<img src="../img/index/msyd2_web_17.jpg" />
+									<div class="type-hover">
+										<label></label>
+									   <img src="../img/index/msyd2_web_03_hver.jpg" alt="" />
+									   <img src="../img/index/msyd2_web_05_hver.jpg" alt="" />
+									   <img src="../img/index/msyd2_web_07_hver.jpg" alt="" />
+									   <span>最多可住2人  |  可加床：是   |  建筑面积：31平米   |   特色：禅意/亲自</span>
+									</div>
+								</li>
+								<li>大床房</li>
+								<li>双早</li>
+								<li>免费无线</li>
+								<li>不可退款</li>
+								<li>￥890</li>
+								<li class="btn">
+									<a href="#">预订</a>
+								</li>
+							</ul>
+							<ul class="Room-type">
+								<li class="first">
+									<img src="../img/index/msyd2_web_20.jpg" />
+								</li>
+								<li>观景大床房</li>
+								<li>双早</li>
+								<li>免费无线</li>
+								<li>不可退款</li>
+								<li>￥980</li>
+								<li class="btn">
+									<a href="#">预订</a>
+								</li>
+							</ul>
+							<ul class="Room-type">
+								<li class="first">
+									<img src="../img/index/msyd2_web_22.jpg" />
+								</li>
+								<li>观景大床套房</li>
+								<li>双早</li>
+								<li>免费无线</li>
+								<li>不可退款</li>
+								<li>￥980</li>
+								<li class="btn">
+									<a href="#">预订</a>
+								</li>
+							</ul>
+							<ul class="Room-type">
+								<li class="first">
+									<img src="../img/index/msyd2_web_24.jpg" />
+								</li>
+								<li>观景双床房</li>
+								<li>双早</li>
+								<li>免费无线</li>
+								<li>不可退款</li>
+								<li>￥980</li>
+								<li class="btn">
+									<a href="#">预订</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+                     <div class="col-xs-12 minsu-list">
+                     	 <h3>民宿信息</h3>
+                     	 <div class="jianjie">
+                     	  <dl>
+                     	  	<dt>民宿简介</dt>
+                     	  	<dd>无锡鸣珂里桃花源精品酒店是以非遗文化为主的精品酒店，酒店内有许多非遗文化包括老绣片、
+                     	  		雕版印刷、书法、绘画、竹编、古琴、皮影戏、核雕。这些经过数千年的流传下来的民艺（作品），包含了无锡的历史底蕴，鸣珂里一直在山中等待你的大驾光临。</dd>
+                     	  </dl>
+                     	  </div>
+                     	  
+                     	  <div class="jianjie time">
+                     	  	<dl>
+                     	  		<dt>入离店时间</dt>
+                     	  		<dd>
+                     	  			<i>入住时间：14:00以后	<span>  |  </span>   </i>
+                     	  			
+                     	  				<i>离店时间：12:00之前<span>  |  </span>   </i>
+                     	  				
+                     	  		       <i>儿童政策：不接受18岁以下客人单独入住。</i>
+                     	  		</dd>
+                     	  	</dl>
+                     	  </div>
+                     	  
+                     	  <div class="shes">
+                     	  	  <h4>配套设施</h4>
+                     	  	  
+                     	  	  <div class="shes-text">
+                     	  	  	<div class="shes-text_one"> 
+                     	  	  	 <dl>
+                     	  	  	 	<dt>基础设施</dt>
+                     	  	  	 	<dd class="float-dd dd-width">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>有可无线上网的公共区域 免费 </li>
+                     	  	  	 		<li>中央空调</li>
+                     	  	  	 		<li>公共区域闭路电视监控系统   </li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd dd-width-two">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>中餐厅  </li>
+                     	  	  	 		<li> 公共音响系统 </li>
+                     	  	  	 		<li>免费停车场</li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd dd-width-three">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>酒吧</li>
+                     	  	  	 		<li>非经营性客人休息区 </li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>大堂吧</li>
+                     	  	  	 		<li>多媒体演示系统</li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 </dl>
+                     	  	  	 </div>
+                     	  	  	 
+                     	  	  	 <div class="shes-text_one shes-text_two">
+                     	  	  	 	<dl>
+                     	  	  	 	<dt>活动设施</dt>
+                     	  	  	 	<dd class="float-dd dd-width">
+                     	  	  	 		<ul>
+                     	  	  	 		<li> 棋牌室   </li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd dd-width-two">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>茶室</li>
+                     	  	  	 	
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd dd-width-three">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>烧烤</li>
+                     	  	  	 		
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	
+                     	  	  	 </dl>
+                     	  	  	 </div>
+                     	  	  	 
+                     	  	  	 <div class="shes-text_one shes-text_three"> 
+                     	  	  	 <dl>
+                     	  	  	 	<dt>服务项目</dt>
+                     	  	  	 	<dd class="float-dd dd-width">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>叫车服务    </li>
+                     	  	  	 		<li>外送洗衣服务</li>
+                     	  	  	 	
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd dd-width-two">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>叫醒服务     </li>
+                     	  	  	 		
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd dd-width-three">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>信用卡结算服务    </li>
+                     	  	  	 		
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>商务服务   </li>
+                     	  	  	 	
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 </dl>
+                     	  	  	 </div>
+                     	  	  	 
+                     	  	  	 
+                     	  	  	 
+                     	  	  	 <div class="shes-text_one shes-text_four"> 
+                     	  	  	 <dl>
+                     	  	  	 	<dt>基础设施</dt>
+                     	  	  	 	<dd class="float-dd dd-width">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>免费洗漱用品(6样以上)  </li>
+                     	  	  	 		<li>书桌     </li>
+                     	  	  	 		<li>浴衣    </li>
+                     	  	  	 		<li>独立淋浴间 </li>
+                     	  	  	 		<li>220V电压插座 </li>
+                     	  	  	 		<li> 床具:毯子或被子</li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd dd-width-two">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>免费瓶装水 </li>
+                     	  	  	 		<li>浴室化妆放大镜 </li>
+                     	  	  	 		<li> 多种规格电源插座  </li>
+                     	  	  	 		<li>吹风机  </li>
+                     	  	  	 		<li>遮光窗帘 </li>
+                     	  	  	 		<li>欢迎礼品</li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd dd-width-three">
+                     	  	  	 		<ul>
+                     	  	  	 		<li>客房WIFI覆盖免费   </li>
+                     	  	  	 		<li>24小时热水 </li>
+                     	  	  	 		<li>110V电压插座*  </li>
+                     	  	  	 		<li>中央空调  </li>
+                     	  	  	 		<li>手动窗帘 </li>
+                     	  	  	 		<li>沙发</li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 	<dd class="float-dd">
+                     	  	  	 		<ul>
+                     	  	  	 		<li> 拖鞋</li>
+                     	  	  	 		<li>电热水壶</li>
+                     	  	  	 		<li>浴缸*</li>
+                     	  	  	 		<li>针线包</li>
+                     	  	  	 		<li>备用床具</li>
+                     	  	  	 		</ul>
+                     	  	  	 	</dd>
+                     	  	  	 </dl>
+                     	  	  	 </div>
+                     	  	  </div>
+                     	  </div>
+                     </div>
+                     
+                     
+				    <div class="col-xs-12 dianpin">
+				    	 <h3>咨询点评</h3>
+				    	 	<ul class="dianpin-who">
+				    	 		<li>
+				    	 			<div class="name_style">
+				    	 				<i><img src="../img/index/msyd_icon-1.png"/></i>
+				    	 				<span><a href="#">你的名字</a></span>
+				    	 			</div>
+				    	 			<div class="text_style">
+				    	 				<div class="text-us">
+				    	 					<p>我没有想说的其实 我喜欢现在的生活</p>
+				    	 				</div>
+				    	 				 <div class="text-me">
+				    	 				 	<p>尊敬的客户你好 ，我不想回答你的问题</p>
+				    	 				 </div>
+				    	 				
+				    	 			</div>
+				    	 		</li>
+				    	 	</ul>
+				    	 	<div class="dianpin-sub">
+				    	 		<ul>
+				    	 			<li class="avatar"></li>
+				    	 			<li></li>
+				    	 			<li>您好 ，欢迎你的光临！</li>
+				    	 			<li><a href="">[退出]</a></li>
+				    	 		</ul>
+				    	 		<i>留言内容：（500字以内）</i>
+				    	 		<form  class="sub">
+				    	 			<textarea id="ly"></textarea>
+				    	 			<input type="submit"  value="确认，提交" onclick="sub()"/>
+				    	 		</form>
+				    	 	</div>
+				    </div>
+					  
+				</div>
+			</div>
+		</div>
+
+		<div class="foot">
+			<div class="footer-row">
+					<table>
+						<tr>
+							<th>关于我们</th>	
+							<th>阳村招商</th>
+							<th>常见问题</th>
+							<th>合作伙伴</th>
+						</tr>
+						<tr>
+							<td>
+								<a href="about-contact.html" target="_parent">联系我们</a>
+							</td>
+							<td>
+								<a href="zhaoshang.html" target="_parent">招商政策</a>
+							</td>
+							<td>
+								<a href="yuding.html" target="_parent">预订流程</a>
+							</td>
+							<td>
+								<a href="">旅游情报</a>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>
+								<a href="about.html" target="_parent">公司简介</a>
+							</td>
+							<td>
+								<a href="zhaoshang-login.html" target="_parent">在线报名</a>
+							</td>
+							<td>
+								<a href="problem.html"target="_parent">Q&A</a>
+							</td>
+							<td>
+								
+							</td>
+						</tr>
+					
+					</table>	
+
+				<div class="contact ">
+					<span class="tel"></span>
+					<span>咨询电话<br />40000-96828</span>
+					<img src="../img/index/jthomt_13.jpg"/>
+				</div>
+			</div>
+			<hr/>
+			<p class="text-center">CopyRight&nbsp;&copy;&nbsp;上海智汇乡创旅游发展有限公司 沪ICP备13045608号-1</p>
+		</div>
+
+	</body>
+	<script src="../components/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>
+	<!--<script src="../components/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+	<!--<script src="../components/bootstrap/js/html5shiv.js" type="text/javascript"></script>-->
+	<script src="../components/bootstrap/js/respond.js" type="text/javascript"></script>
+
+	<!--<script src="../components/placeholder/jquery.placeholder.min.js" type="text/javascript"></script>-->
+	<script type="text/javascript">
+		$(function() {
+			$('.paging ul li').click(function() {
+				$(this).addClass('paging-active').siblings().removeClass('paging-active');
+			});
+          
+          //r轮播tu
+			var i=0
+			function move(){
+				i++;
+				if(i>1){
+					i=0;
+				}
+				$('.mingkeli-box1-img .img img ').eq(i).stop().fadeIn(2000).siblings().stop().fadeOut(2000);	
+			}
+			time=setInterval(move,4000)
+			$('.mingkeli-box1-img').hover(function(){
+				clearInterval(time);
+			},function(){
+				time=setInterval(move,4000);
+			})
+			$('.ltr .left').click(function(){
+				i-=2;
+				move();
+			})
+			$('.ltr .right').click(function(){
+				move();
+			})
+          
+          
+          
+          
+			
+		})
+		
+		function p(s) {
+				return s < 10 ? '0' + s : s;
+			}
+		//获取当前时间  开始时间加一天
+			var myDate = new Date();
+			var year = myDate.getFullYear();
+			var month = myDate.getMonth() + 1;
+			var date = myDate.getDate()+1;
+			var now = year + '-' + p(month) + "-" + p(date);
+			$('#d5221').val(now);
+			$('#d5222').val(getNextDay(now));
+		
+		//结束日期自动加一天
+		function oneDay(){
+			var ksdate = $('#d5221').val();
+			$('#d5222').val(getNextDay(ksdate));
+		}
+		function getNextDay(d){
+	        d = new Date(d);
+	        d = +d + 1000*60*60*24;
+	        d = new Date(d);
+	        return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+	         
+	    }
+		
+		
+		//计算天数差的函数，通用  
+		function DateDiff(sDate1, sDate2) { //sDate1和sDate2是2002-12-18格式  
+			var aDate, oDate1, oDate2, iDays
+			aDate = sDate1.split("-")
+			oDate1 = new Date(aDate[1] + '-' + aDate[2] + '-' + aDate[0]) //转换为12-18-2002格式  
+			aDate = sDate2.split("-")
+			oDate2 = new Date(aDate[1] + '-' + aDate[2] + '-' + aDate[0])
+			iDays = parseInt(Math.abs(oDate1 - oDate2) / 1000 / 60 / 60 / 24) //把相差的毫秒数转换为天数  
+			return iDays;
+			
+		}
+		//判断选着日期是不是超过20天
+		function changeTime(){
+			var ksdate = $('#d5221').val();
+			var stopdate = $('#d5222').val();
+			$('.day-time').html(DateDiff(ksdate,stopdate));
+			if(DateDiff(ksdate,stopdate)>20){
+				 alert("如果你要入住满20天以上，请到电4000096828酒店客服，我们将竭诚为你服务！");
+			}
+		}
+		
+	</script>
+
+</html>

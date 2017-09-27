@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+		<title></title>
+
+	</head>
+
+	<body>
+		
+	</body>
+	<script src="../components/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var user_id = '18115';
+		var order_id = 'XZ029843';
+		ajax1();
+		setInterval(function() {
+			ajax1();
+		}, 20000)
+		function ajax1(){
+			$.ajax({
+				url: 'http://jx.myvacation.cn/myadmin1/lyqb/weixin_tuikuan_show.php?user_id=' + user_id + '&order_id=' + order_id + '', // 跳转到 action
+				data: {},
+				type: 'get',
+				async: true,
+				dataType: 'text',
+				success: function(data) {
+					var da = data.split('<br>');
+					console.log(da);
+					if(da[0]=='支付成功'){
+						window.location.href='http://www1.yangvillage.com/members/personal/myorderinfo/order_pay_success.php?oid=34153';
+					}else if(da[0]=='未支付'){
+						alert(da[0]);
+					}else if(da[0]=='order not exist'){
+						alert(da[0]);
+					}else{
+						alert('支付失败');
+					}
+
+				}
+			});
+		}
+	</script>
+
+</html>

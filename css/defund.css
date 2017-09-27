@@ -1,0 +1,29 @@
+.defund .row {
+  padding: 100px 0 120px 260px;
+}
+.defund .row .defund-text {
+  color: #595959;
+}
+.defund .row .defund-text h5 {
+  margin: 15px 0 25px 0;
+}
+.defund .row .defund-text span {
+  display: block;
+  color: #555555;
+}
+.defund .row .defund-text a {
+  display: block;
+  width: 100px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background: #59493f ;
+  color: #fff;
+  font-size: 17px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 768px) {
+  .defund .row {
+    padding: 100px 0 120px 100px;
+  }
+}

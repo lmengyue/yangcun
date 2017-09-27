@@ -1,0 +1,62 @@
+html, body, div, h1, h2, h3, h4, h5, h6, p, form, ul, ol, li, dl, dt, dd, img, object, table, iframe, button, fieldset, input, select, textarea, a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-family: Microsoft YaHei;
+}
+
+*, ::after, ::before {
+    /*-webkit-user-select: none;*/
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+}
+html{
+    height: auto;
+}
+a{
+    text-decoration:none;
+    color: #000000;
+}
+body{
+    -webkit-user-select:none;
+
+}
+ul, menu, dir {
+    list-style-type: none;
+}
+/*第一种清除浮动的方法*/
+.clearafter::after{
+    content:'\20';
+    display: block;
+    clear: both;
+}
+/*第二种清除浮动的方法 兼容IE*/
+.zoom_clear{
+    overflow: hidden;
+    zoom: 1;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+
+.mark{
+    width: 100%;
+    height: 100%;
+    top:0;
+    position: fixed;
+    z-index: 99;
+    opacity: 0.5;
+    background-color: #000;
+    display: none;
+}
+.input-mod-1 input{
+    width: 50%;
+}
+.input-mod-2 input{
+    width: 68%;
+}

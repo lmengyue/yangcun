@@ -1,0 +1,905 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <!--<script type="text/javascript" src="__JS__/jquery.alertWindow.min.js"></script>-->
+    <script type="text/javascript" src="http://m1.myvacation.cn/members/pay/js/zepto.min.js"></script>
+    <!--<script type="text/javascript" src="__JS__/timer.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/payments.css?v=3.0">
+    
+    <link rel="stylesheet" type="text/css" href="../css/reset.css?5" />
+		<link rel="stylesheet" type="text/css" href="../css/head-footer.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../css/order.css" />
+		<link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css" />
+
+		<style type="text/css">body {
+	font-family: Microsoft YaHei;
+}</style>
+
+
+    <title>选择支付方式</title>
+
+    <script type="text/javascript">var useLYJ = 0;
+var maxUsePrice;
+var card_id_string = "";
+$(document).ready(function() {
+
+	//height360px 手机的适配
+	var clienHeight = getClientHeight();
+	if(clienHeight <= 380) {
+		$(".box").css("height", "65%");
+		$(".box_contend").css("height", "70%")
+	}
+
+	//ajax获取优数据  并输出
+	$.ajax({
+		url: 'http://www1.yangvillage.com/members/personal/action/get_xl_pay_string.php', // 跳转到 action
+		data: {
+			nouser: '1',
+			order_id: 34159,
+			hydj: 2,
+			p_type: ""
+		},
+		type: 'post',
+		cache: false,
+		dataType: 'json',
+		success: function(data) {
+			maxUsePrice = data.lyb_can_use;
+			canUseVouchers = data.use_card_num;
+			u_card_num_txt = data.use_card_num;
+
+			$(".order_information_num").html(data.order_id);
+			$(".order_information_price p").html(data.total_zje);
+			$(".true_price p").html(data.total_zje);
+			$(".no_use_lyb .mod_ts span").html(data.lyb_can_use);
+			$(".input_num").val(data.lyb_can_use);
+			//旅游币数目判断
+			if(data.lyb_can_use == "" || data.lyb_can_use == null || data.lyb_can_use == 0 || data.lyb_can_use == undefined) {
+				$(".no_use_lyb ").hide();
+			}
+			//旅游?数目判断
+			if(data.lyq_string == "" || data.lyq_string == null || data.lyq_string.length == 0 || data.lyq_string == undefined || data.use_card_num == 0) {
+				$(".no_used_j").hide();
+			} else {
+				$(".no_used_j .have_number").html(data.lyq_string.length);
+			}
+			////////////////////////////////////////////////////////////////  
+			if($(".no_use_lyb ").hide()&&$(".no_used_j").hide()){
+				$(".pay-lvyou").hide();
+			}
+			
+			//支付方式选择判断
+			if(data.order_paytype == "" || data.order_paytype == null || data.order_paytype == undefined) {
+				$("#select_no").addClass("selected");
+			} else {
+				if(data.order_paytype == 1) {
+					$("#select_1").addClass("selected");
+				} else if(data.order_paytype == 6) {
+					$("#select_2").addClass("selected");
+				} else if(data.order_paytype == 3) {
+					$("#select_3").addClass("selected");
+				} else if(data.order_paytype == 4) {
+					$("#select_4").addClass("selected");
+				} else {
+					$("#select_no").addClass("selected");
+				}
+			}
+
+			//遍历输出旅游券
+			boxList = "";
+			for(var i = 0; i < data.lyq_string.length; i++) {
+				var time = data.lyq_string[i].到期时间;
+				var newtime = time.substr(0, 10);
+				boxList += "<li data-id=" + data.lyq_string[i].编号 + ">";
+				boxList += "<span class='box_price'><p>" + data.lyq_string[i].面额 + "</p>&nbsp;元</span>";
+				boxList += "<span class='box_time'>有效期至&nbsp;<p>" + newtime + "</p></span>";
+				boxList += "</li>";
+			}
+			$(".box_contend").html(boxList);
+
+			//                    ---------------绑定事件的分割线----------------
+
+			//打开优惠?弹框
+			$(".button_j").click(function() {
+				useLYJ = $(".true_price p").html();
+				//实付金额为0时  未选中的优惠卷不可选中
+				if(useLYJ == 0) {
+					alert("金额已全部抵扣!");
+					return false;
+				}
+				//遍历优惠卷 超过可抵扣面额的优惠卷变不可选取
+				$(".box_contend li").each(function() {
+					var money = $(this).find(".box_price p").html();
+					var thisMS = money - canUseVouchers;
+					if(thisMS > 0) {
+						$(this).addClass("boxli_false");
+						$(this).addClass("over-vouchers");
+					}
+				});
+				$(".box_kj").show();
+				$(".mark").show();
+			});
+
+			//关闭优惠?弹框
+			$(".mark,.box_title_close").click(function() {
+				$(".box_contend li").removeClass("boxli_selected");
+				$(".box_contend li").removeClass("boxli_false");
+				$(".true_price p").html(useLYJ);
+				$(".batch").removeClass("batch_on");
+				$(".true_price p").removeAttr("data-price");
+				$(".box_kj").hide();
+				$(".mark").hide();
+			});
+
+			//选取优惠?
+			$(".box_contend li").click(function() {
+				//灰色优惠卷不可选取
+				if($(this).hasClass("boxli_false")) {
+					return false;
+				}
+				if($(this).hasClass("boxli_selected")) {
+					//取消选中
+					var money = $(this).find(".box_price p").html();
+					var truePrice = $(".true_price p").html();
+					if(truePrice == 0) {
+						var truePrice = $(".true_price p").attr("data-price");
+					}
+					var newtruePrice = parseInt(truePrice) + parseInt(money);
+					var showPrice = newtruePrice;
+					if(newtruePrice > 0) {
+						$(".box_contend li").removeClass("boxli_false");
+						//遍历优惠卷 超过可抵扣面额的优惠卷变不可选取
+						var lave = canUseVouchers - useLYJ + newtruePrice;
+						$(".box_contend li").each(function() {
+							var thisMoney = $(this).find(".box_price p").html();
+							if(!$(this).hasClass("boxli_selected") && thisMoney > lave) {
+								$(this).addClass("boxli_false");
+							}
+						});
+						$(".true_price p").removeAttr("data-price");
+					} else if(newtruePrice < 0) {
+						var showPrice = 0;
+						$(this).addClass("boxli_false");
+						$(".true_price p").attr("data-price", newtruePrice);
+					}
+					$(this).removeClass("boxli_selected");
+					$(".true_price p").html(showPrice);
+				} else {
+					//选中优惠卷
+					var money = $(this).find(".box_price p").html();
+					var truePrice = $(".true_price p").html();
+					if(truePrice > 0) {
+						var newtruePrice = truePrice - money;
+						var showPrice = newtruePrice;
+						var lave = canUseVouchers - useLYJ + newtruePrice;
+						$(this).addClass("boxli_selected");
+						if(newtruePrice <= 0) {
+							var showPrice = 0;
+							//遍历优惠卷 剩余不用的优惠卷变不可选取
+							$(".box_contend li").each(function() {
+								if(!$(this).hasClass("boxli_selected")) {
+									$(this).addClass("boxli_false");
+								}
+							});
+							$(".true_price p").attr("data-price", newtruePrice);
+						} else {
+							//遍历优惠卷 优惠券面额大于剩余可使用限额  不可选取
+							$(".box_contend li").each(function() {
+								var thisMoney = $(this).find(".box_price p").html();
+								if(!$(this).hasClass("boxli_selected") && thisMoney > lave) {
+									$(this).addClass("boxli_false");
+								}
+							});
+						}
+					} else {
+						return false;
+					}
+					$(".true_price p").html(showPrice);
+				}
+			});
+
+			//批量选择优惠卷
+			$(".batch").click(function() {
+				if($(this).hasClass("batch_on")) {
+					$(".true_price p").html(useLYJ);
+					$(".box_contend li").removeClass("boxli_selected");
+					$(".box_contend li").removeClass("boxli_false");
+					$(".box_contend .over-vouchers").addClass("boxli_false");
+					$(this).removeClass("batch_on");
+					$(".true_price p").removeAttr("data-price");
+				} else {
+					//遍历选取需要选取的优惠卷
+					$(".box_contend li").each(function() {
+						if(!$(this).hasClass("boxli_selected") && !$(this).hasClass("boxli_false")) {
+							var money = $(this).find(".box_price p").html();
+							var truePrice = $(".true_price p").html();
+							var newtruePrice = truePrice - money;
+							var lave = canUseVouchers - useLYJ + newtruePrice;
+							if(truePrice > 0) {
+								if(lave >= 0) {
+									var showPrice = newtruePrice;
+									$(this).addClass("boxli_selected");
+									if(newtruePrice <= 0) {
+										var showPrice = 0;
+										$(".box_contend li").each(function() {
+											if(!$(this).hasClass("boxli_selected")) {
+												$(this).addClass("boxli_false");
+											}
+										});
+										$(".true_price p").attr("data-price", newtruePrice);
+									}
+									//遍历优惠卷 优惠券面额大于剩余可使用限额  不可选取
+									$(".box_contend li").each(function() {
+										var thisMoney = $(this).find(".box_price p").html();
+										if(!$(this).hasClass("boxli_selected") && thisMoney > lave) {
+											$(this).addClass("boxli_false");
+										}
+									});
+								}
+							} else {
+								return false;
+							}
+							$(".true_price p").html(showPrice);
+						}
+					});
+					$(this).addClass("batch_on");
+				}
+			});
+
+			//确认使用优惠卷
+			$(".submit_button").click(function() {
+				var truePrice = $(".true_price p").html();
+				var dkPrice = useLYJ - truePrice;
+				$(".used_j .dk_price p").attr("data-price", dkPrice);
+				if(truePrice == 0) {
+					var dataPrice = $(".true_price p").attr("data-price");
+					dkPrice = dkPrice - dataPrice;
+				}
+				if(dkPrice > 0) {
+					$(".used_j .dk_price p").html(dkPrice);
+					$(".no_used_j").hide();
+					$(".used_j").show();
+				}
+				$(".box_contend li").each(function() {
+					if($(this).hasClass("boxli_selected")) {
+						var dataID = $(this).attr("data-id");
+						if(card_id_string == "") {
+							card_id_string = dataID;
+						} else {
+							card_id_string = card_id_string + "," + dataID;
+						}
+					}
+				});
+				$(".box_kj").hide();
+				$(".mark").hide();
+			});
+
+			//撤销优惠卷
+			$(".used_j .button_undo").click(function() {
+				card_id_string = "";
+				var truePrice = $(".true_price p").html();
+				var dkPrice = $(".used_j .dk_price p").attr("data-price");
+				var newtruePrice = parseInt(truePrice) + parseInt(dkPrice);
+				$(".true_price p").html(newtruePrice);
+				$(".box_contend li").removeClass("boxli_selected");
+				$(".box_contend li").removeClass("boxli_false");
+				$(".batch").removeClass("batch_on");
+				$(".true_price p").removeAttr("data-price");
+				$(".no_used_j").show();
+				$(".used_j").hide();
+			});
+		},
+		error: function() {
+			// view("异常！");
+			alert("异常！");
+		}
+	});
+
+	//选取支付方式
+	$(".select").click(function() {
+		if($(this).hasClass("selected")) {
+			$(".select").removeClass("selected");
+		} else {
+			$(".select").removeClass("selected");
+			$(this).addClass("selected");
+		}
+	});
+
+	//使用旅游币
+	$(".button_lyb").click(function() {
+		if(!$(this).parent().hasClass("false")) {
+			var num = $(".input_num").val();
+			var truePrice = $(".true_price p").html();
+			if(truePrice == 0) {
+				alert("金额已全部抵扣!");
+				return false;
+			}
+			if(parseInt(num) > parseInt(truePrice)) {
+				num = truePrice;
+				$(".input_num").val(num);
+			}
+			var newTruePrice = truePrice - num;
+			if(num != 0 && num != "" && num != null) {
+				$(".no_use_lyb").hide();
+				$(".used_lyb").show();
+				$(".used_lyb .dk_price p").html(num);
+				$(".true_price p").html(newTruePrice);
+			} else {
+				alert("使用的旅游币金额必须大于0")
+			}
+		}
+	});
+	//撤销使用旅游币
+	$(".button_undo_lyb").click(function() {
+		var undoPrice = $(".used_lyb .dk_price p").html();
+		var truePrice = $(".true_price p").html();
+		var newTruePrice = parseInt(truePrice) + parseInt(undoPrice);
+		$(".no_use_lyb").show();
+		$(".used_lyb").hide();
+		$(".true_price p").html(newTruePrice);
+	});
+
+	//旅游币数目输入监控
+	$(".input_num").keyup(function() {
+		var yuNum = maxUsePrice;
+		this.value = this.value.replace(/\D/g, '');
+		if(parseInt(this.value) > parseInt(yuNum)) {
+			$(this).parent().parent().addClass("false");
+		} else {
+			$(this).parent().parent().removeClass("false");
+		}
+	});
+	//            $(".input_num").afterpaste(function () {
+	//                this.value=this.value.replace(/\D/g,'');
+	//            });
+
+	//确认支付
+	$(".pay_button").click(function() {
+		var truePrice = $(".true_price p").html();
+		var order_id = $(".order_information_num").html();
+		var total_zje = $(".order_information_price p").html();
+		var p_type = "";
+		if($(".no_use_lyb").css("display") == "none") {
+			var lyb_post = $(".used_lyb .dk_price p").html();
+		} else {
+			var lyb_post = 0;
+		}
+		if(truePrice > 0) {
+			var num = 0;
+			var order_paytype = "";
+			$(".pay_way .select").each(function() {
+				if($(this).hasClass("selected")) {
+					num = 1;
+					order_paytype = $(this).attr("data-id");
+				}
+			});
+			if(num == 0) {
+				alert("请选择支付方式");
+				return false;
+			} else {
+				location.href = "http://www1.yangvillage.com/action/pay_order.php?fs=web&p_type=" + p_type + "&order_id=" + order_id + "&total_zje=" + truePrice + "&total_zje_old=" + total_zje + "&lyb_post=" + lyb_post + "&card_id_string=" + card_id_string + "&order_paytype=" + order_paytype;
+			}
+		} else {
+			if(typeof($(".true_price p").attr("data-price")) == "undefined") {
+				truePrice = $(".true_price p").html();
+			} else {
+				truePrice = $(".true_price p").attr("data-price");
+			}
+			if(truePrice == null) {
+				truePrice = 0;
+			}
+			var order_paytype = "";
+			location.href = "http://www1.yangvillage.com/action/pay_order.php?fs=web&p_type=" + p_type + "&order_id=" + order_id + "&total_zje=" + truePrice + "&total_zje_old=" + total_zje + "&lyb_post=" + lyb_post + "&card_id_string=" + card_id_string + "&order_paytype=" + order_paytype;
+		}
+	});
+
+});
+//获取当前可视范围的高度
+function getClientHeight() {
+	var clientHeight = 0;
+	if(document.body.clientHeight && document.documentElement.clientHeight) {
+		clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+	} else {
+		clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+	}
+	return clientHeight;
+}</script>
+    
+    <link rel="stylesheet" type="text/css" href="http://www.puzzletravel.cn/hotel/step/style/step.css">
+
+<style>.day_body {
+	background-color: #FFF;
+}
+
+fieldset {
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #ffdaa0;
+}
+
+legend {
+	font-weight: bold;
+	margin-left: 10px;
+	padding: 5px 15px 3px 15px;
+	color: #333;
+	font-size: 14px
+}
+
+fieldset legend {
+	margin: 0 auto;
+	padding: 5px 15px 5px 15px;
+	font-size: 20px;
+	height: auto
+}
+
+.input_style {
+	line-height: 20px;
+	overflow: hidden;
+	padding-left: 5px;
+	width: 95px;
+	background: url(/images/sel_day.gif) no-repeat right 2px;
+}
+
+.fomdiv {
+	padding: 10px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+
+.fomdiv legend {
+	background-color: #fff;
+	color: #f50;
+	font-size: 13px;
+	margin-bottom: 6px;
+	padding-left: 0
+}
+
+label {
+	padding-bottom: 6px;
+}
+
+ol {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+ol li {
+	margin-top: 10px;
+}
+
+ol li p {
+	margin: 0px;
+	padding: 0px;
+	padding-top: 5px;
+	color: #333;
+	line-height: 180%;
+	padding-left: 25px;
+}
+
+ol li p strong {
+	font-family: Verdana, Geneva, sans-serif;
+	color: #ff9900;
+	font-size: 13px;
+}
+
+ol li p span a {
+	border-bottom: 1px dashed #17438B !important;
+	color: #17438B;
+	text-decoration: none;
+}
+
+ol li input {
+	height: 15px;
+}
+
+label {
+	font-weight: bold;
+	margin: 0px;
+	padding: 0px;
+}
+
+.bt {
+	padding-left: 50px;
+	padding-top: 5px;
+	padding-bottom: 15px
+}
+
+.bt input {
+	padding: 5px 15px 2px 15px;
+}
+
+input.btn_4txt_b {
+	width: 90px;
+	height: 27px;
+	line-height: 27px;
+	padding: 0;
+	background-color: #98CA06;
+	font-size: 14px;
+	color: #fff;
+	font-weight: 700;
+	border: none;
+	cursor: pointer
+}
+
+#zffs {
+	padding: 0 25px 15px 25px
+}
+
+#zffs label strong {
+	font-weight: 100
+}
+
+.dyq-widget {
+	padding: 5px 15px;
+	font-weight: 100;
+	background: none;
+	border: 1px solid #fff
+}
+
+.dyq-widget:hover {
+	background: #fffcde;
+	border: 1px solid #d0c3ae
+}
+
+#dhtmltooltip {
+	position: absolute;
+	left: -300px;
+	width: 250px;
+	border: 1px solid black;
+	padding: 2px;
+	background-color: lightyellow;
+	visibility: hidden;
+	z-index: 100;
+	text-align: left;
+	padding-left: 5px;
+	line-height: 140%;
+	/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
+	filter: progid:DXImageTransform.Microsoft.DropShadow(color=#D6D6D6, offX=3, offY=3, positives=true);
+}
+
+#dhtmlpointer {
+	position: absolute;
+	left: -300px;
+	z-index: 101;
+	visibility: hidden;
+}
+
+.footer_fix {
+	padding: 0;
+	overflow: hidden;
+	clear: both;
+	_zoom: 1;
+	font-weight: 100
+}</style>
+
+
+</head>
+<body class="payments_bg">
+
+<!--//头部开始-->
+<SCRIPT language="JavaScript" src="http://www1.yangvillage.com/js/UserOperationCon.js" type="text/JavaScript"></SCRIPT>
+<SCRIPT language="JavaScript" src="http://www1.yangvillage.com/js/DateHttpSendCon.js" type="text/JavaScript"></SCRIPT>
+<script>if(typeof jQuery == 'undefined') {
+	document.write('<script type=\"text\/javascript\" src=\"\/js\/jquery.min.144.js\"><\/script>');
+}
+$(function() {
+
+	//导航
+	$('.nav-li li').click(function() {
+		$(this).addClass('active').siblings().removeClass('active');
+	})
+
+})</script>
+
+
+<div class="navbar-head" id="toTop">
+    <div class="container">
+        <div class="row">
+            <a href="/" target="_parent" class="col-sm-5">
+                <img src="/img/index/logo_1.png" />
+            </a>
+            <div class="col-sm-7 nav-head">
+                <div class="row login-ok">
+                    <div class="col-sm-12">
+                        <span class="name" style="margin-left: 0">
+                        <span>
+                            <strong>
+                            <a id="editlink" name="editlink" class="name" href="/members/personal/myreginfo/edituserinfo.php" target="_self">xilihua</a>
+<span class="lv-gj"></span>                             </strong>
+                        </span>&nbsp;,您好!
+                        </span>
+                        <span class="personal">
+                            <a href="http://www1.yangvillage.com/members/personal/"><i class="personal-center"></i>&nbsp;我的个人中心&nbsp;</a>
+                        </span>
+                        <!--高级会员粘贴处.....-->
+                        <span class="tt">|</span>
+                        <span class="out">
+                            <a href="javascript:;" class="exit" onclick="javascript:myUser.logout();">&nbsp;退出</a>
+                        </span>
+                        <span class="order">
+                            <a href="http://www1.yangvillage.com/members/personal/myorderinfo/myorder.php" target="_parent">查看我的订单</a>
+                        </span>
+
+
+                    </div>
+                </div>
+                    <ul class="col-sm-12" style="padding-left: 0">
+                                                <li class="active offset">
+                            <a href="/index.php" target="_parent">首页</a>
+                        </li>
+                                                <li>
+                            <a href="/pages/activ.html">走进阳村</a>
+                        </li>
+                                                <li>
+                            <a href="/pages/booking.html">民宿预订</a>
+                        </li>
+                                                <li>
+                            <a href="/pages/gift.html">伴手选礼</a>
+                        </li>
+                                                <li>
+                            <a href="/article/418/1.htm">新闻资讯</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--//头部结束-->
+
+<div class="order-box">
+			<div class="container order">
+				<div class="row">
+					<div class="col-sm-12 order-head">
+						<ul>
+							<li>
+								1.订单填写
+								<span></span>
+							</li>
+							<li class="denger">2.订单确认
+								<span></span>
+							</li>
+							<li  class="active">
+								3.订单支付
+								<span></span>
+							</li>
+							<li>
+								4.订单完成
+
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-sm-12 order-pays">
+                    
+                    
+                    
+                    
+                    
+                    <div class="day_body web">
+<br>
+
+
+
+                        
+                        <div class="mark"></div>
+                        
+                        
+						<div class="order-pay-box">
+                        
+                        
+                         <!--订单信息-->
+                        <div class="order_information clearafter">
+                            <span class="order_information_type1">订单编号:</span>
+                            <span class="order_information_num"></span>
+                            <span class="order_information_price">￥<p></p></span>
+                            <span class="order_information_type2">订单总金额:</span>
+                        </div>
+                        
+                        <!--订单信息end-->
+                        
+                        
+                        
+                         <!--旅游币、?使用状况-->
+                         <h4 class="pay-lvyou">请使用优惠折扣：</h4>
+                        <div class="mod mod_bottom no_use_lyb clearafter">
+                            <span class="deductible">当前可使用的旅游币：</span>
+                            <span class="input" style="width:66px;">
+                                <input class="input_num" type="text" value="" style="width:30px;" />
+                            </span>
+                            <span class="dw">元</span>
+                            <span class="button button_lyb mod_top">使用</span>
+                            <p class="mod_ts">您当前可使用的旅游币为<span>4000</span>！[本订单最多可以抵扣旅游券<span id="u_card_num_txt">0</span>元]</p>
+                        </div>
+                        <div class="mod mod_bottom used_lyb clearafter">
+                            <span class="deductible">已使用旅游币抵扣</span>
+                            <span class="button_undo button_undo_lyb">撤销</span>
+                            <span class="dk_price">-&nbsp;<p>0</p>元</span>
+                        </div>
+                        
+                        <div class="mod no_used_j clearafter">
+                            <span class="deductible">当前可用旅游券:</span>
+                            <span class="have_number"></span>
+                            <span class="dw">张,</span>
+                            <span class="deductible">已使用&nbsp;:</span>
+                            <span class="use_number">0</span>
+                            <span class="dw">张</span>
+                            <span class="button button_j">使用</span>
+                        </div>
+                        <div class="mod mod_bottom used_j clearafter">
+                            <span class="deductible">已使用旅游券抵扣</span>
+                            <span class="button_undo">撤销</span>
+                            <span class="dk_price">-&nbsp;<p>0</p>元</span>
+                        </div>
+                        <!--旅游币、?使用状况end-->
+                        
+                        
+                        
+                        <!--支付方式-->
+                         <h4 class="title_h4">选择支付方式:</h4>
+                        <div class="pay-fangs">
+                      
+                        <div class="pay_way">
+
+                                <div class="mod2 select clearafter" id="select_2" data-id="6">
+                                      <span class="select_img"></span>
+                                      <span class="icon-img wx-icon"></span>
+                                      <span class="mod2_test">微信支付</span>
+                                  </div>
+
+                            <div class="mod2 select clearafter" id="select_1" data-id="1">
+                                <span class="select_img"></span>
+                                <span class="icon-img zfb-icon"></span>
+                                <span class="mod2_test">支付宝</span>
+                            </div>
+                         </div>   
+							
+							<!--<input type="radio" id="wx" name="btn"/>
+                                <label for="wx" class="wx" >
+                                    <span> 微信支付</span>
+                                </label>-->
+                        
+                            <!--
+                              <input type="radio" id="zfb" name="btn" />
+							<label for="zfb" class="zhifb"  >
+								<span> 支付宝支付</span>
+							</label>
+                             
+                                
+                            
+                             -->
+                            
+                        </div>
+                        
+                       
+                        
+                        
+                        <!--优惠卷弹框-->
+                        <div class="box_kj">
+                            <div class="box clearafter">
+                                <div class="box_title">选择旅游券<span class="box_title_close"></span></div>
+                                <ul class="box_contend clearafter">
+                                    <li>
+                                        <span class="box_price"><p>10</p>&nbsp;元</span>
+                                        <span class="box_time">有效期至&nbsp;<p>2015.09.20</p></span>
+                                    </li>
+                                </ul>
+                        
+                                <div class="submit clearafter">
+                                    <span class="batch"></span>
+                                    <span class="batch_text">批量使用</span>
+                                    <span class="submit_button">确定</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--优惠卷弹框end-->
+                        
+                        <!--支付方式end-->
+                        
+                        <!--支付-->
+                        <div class="fixed_foot_kj clearafter">
+                            <div class="fixed_foot">
+                            	<div class="true_price-box">
+                                <span>实付金额&nbsp;:</span>
+                                <span class="true_price">￥<p>123456789</p></span>
+                                </div>
+                                <span class="pay_button">确认支付</span>
+                            </div>
+                        </div>
+                        <!--支付end-->   
+          </div>
+          
+        </div>              
+  
+ 
+ <div style="overflow:hidden; _zoom:1"></div>
+ 
+ 
+   </div>  
+ 
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+		</div>
+        
+        
+
+
+
+        <div class="foot">
+            <div class="container">
+                <div class="col-sm-8 row">
+                    <div style="margin-left: 20">
+                        <h4>关于我们</h4>
+                        <ul>
+                            <li>
+                                <a href="/pages/about-contact.html" target="_parent">联系我们</a>
+                            </li>
+                            <li>
+                                <a href="/pages/about.html" target="_parent">公司简介</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>阳村招商</h4>
+                        <ul>
+                            <li>
+                                <a href="/pages/zhaoshang.html">招商政策</a>
+                            </li>
+                           
+                            <li>
+                                <a href="/pages/zhaoshang-login.php">在线报名</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>常见问题</h4>
+                        <ul>
+                            <li>
+                                <a href="/pages/yuding.html">预订流程</a>
+                            </li>
+                            <li>
+                                <a href="/pages/problem.html">Q&A</a>
+                            </li>
+                            <!--<li>
+                                <a href="" target="_parent">服务条款</a>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <div class="last-div">
+                        <h4>合作伙伴</h4>
+                        <ul>
+                            <li>
+                                <a href="http://www.myvacation.cn" target="_blank">旅游情报</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 contact">
+                    <span class="tel"></span>
+                    <span>咨询电话<br />40000-96828</span>
+                    <img src="/img/index/jthomt_13.jpg"width="162px" height="163px" />
+                </div>
+
+            </div>
+            <hr/>
+            <p class="text-center">CopyRight&nbsp;&copy;&nbsp;上海智汇乡创旅游发展有限公司 <a href="http://www.miitbeian.gov.cn/" target="_blank">沪ICP备05022037号-31</a></p>
+        </div>
+ 
+
+                       
+</body>
+<script type="text/javascript">
+
+</script>
+</html>

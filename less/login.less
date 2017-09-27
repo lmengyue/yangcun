@@ -1,0 +1,231 @@
+.about {
+    background: #f9f9f9;
+    .about-detail {
+        padding: 34px 85px 60px 85px;
+        .about-ul {
+            border-bottom: 2px solid #6e615b;
+            padding: 4px;
+            margin-bottom: 5px;
+            li {
+                display: inline-block;
+                font-size: 15px;
+                padding: 0 6px;
+                cursor: pointer;
+                a {
+                    display: block;
+                    width: 22px;
+                    height: 22px;
+                    background: url(../img/about/home_icon.png) no-repeat;
+                    background-position: -15px -4px;
+                    transition: .3s;
+                }
+                a:hover {
+                    background-position: -50px -4px;
+                }
+            }
+            .home {
+                height: 24px;
+                padding: 0;
+                padding-top: 5px;
+            }
+        }
+        .login {
+            padding: 0;
+            background: #f3f3f3;
+            margin-top: 50px;
+            border: 1px solid #dcdcdc;
+            .login-img {
+                padding-right: 0;
+            }
+            .login-from {
+                padding: 15px 34px 20px 26px;
+                ul {
+                    margin-bottom: 12px;
+                    li {
+                        display: inline-block;
+                    }
+                    .login-ul-li {
+                        font-size: 22px;
+                        color: #5a492f;
+                        margin-right: 16px;
+                    }
+                    .li-res {
+                        background: url(../img/about/login_icon.png) no-repeat;
+                        background-position: -9px -15px;
+                        a {
+                            color: #c8a063;
+                            margin-left: 16px;
+                        }
+                    }
+                }
+                form {
+                    div {
+                        border: 1px solid #dcdcdc;
+                         height: 45px;
+                        margin-bottom: 5px;
+                        background: #fff;
+
+                        span {
+                            display: inline-block;
+                            width: 91px;
+                            height: 43px;
+
+                            line-height: 43px;
+                            text-align: center;
+                            background: #eeeeee;
+                            i {
+                                color: red;
+                                margin-right: 2px;
+                            }
+                        }
+                        input {
+                            width: 177px;
+                            height: 43px;
+                            line-height: 43px;
+                            border: none;
+                            text-indent: 1em;
+                        }
+                        input::-webkit-input-placeholder,
+                        textarea::-webkit-input-placeholder {
+                            color: #adadad;
+                        }
+                        input:-moz-placeholder,
+                        textarea:-moz-placeholder {
+                            color: #adadad;
+                        }
+                        input::-moz-placeholder,
+                        textarea::-moz-placeholder {
+                            color: #adadad;
+                        }
+                        input:-ms-input-placeholder,
+                        textarea:-ms-input-placeholder {
+                            color: #adadad;
+                        }
+                        
+                        
+                    }
+                    .login-input{
+                        margin: 15px 0;
+                    }
+                    
+                    
+                    
+                    p{
+                        font-size: 12px;
+                        
+                    }
+                    label {
+                        color: #5a492f;
+                        font-weight: 100;
+                        margin: 6px 0 10px;
+                        margin-left: 6px;
+                    }
+                    .so {
+                        margin-left: 130px;
+                        color: #000;
+                    }
+                    .sub {
+                        width: 100%;
+                        height: 34px;
+                        background: #c8a063;
+                        color: #fff;
+                        border: none;
+                        border-radius: 3px;
+                        font-size: 17px;
+                    }
+                    .sub-res {
+                        margin-top: 10px;
+                    }
+                    .sub:hover {
+                        background: #4c3b34;
+                    }
+                   
+                    .login-foot {
+                        width: 100%;
+                        height: 100%;
+                        border-top: 1px solid #dcdcdc;
+                        position: relative;
+                        margin-top: 30px;
+                        .login-foot-text {
+                            display: block;
+                            position: absolute;
+                            font-size: 18px;
+                            text-align: center;
+                            color: #5a492f;
+                            width: 190px;
+                            top: -13px;
+                            left: 47px;
+                            background: #f3f3f3;
+                        }
+                        .weibo {
+                            display: inline-block;
+                            width: 40px;
+                            position: absolute;
+                            height: 40px;
+                            top: 11px;
+                            left: 65px;
+                            background: url(../img/about/login_icon.png) no-repeat;
+                            background-position: -2px -39px;
+                        }
+                        .weibo:hover {
+                            background-position: -39px -39px;
+                        }
+                        .qq {
+                            display: inline-block;
+                            width: 40px;
+                            position: absolute;
+                            height: 40px;
+                            top: 11px;
+                            left: 162px;
+                            background: url(../img/about/login_icon.png) no-repeat;
+                            background-position: -2px -83px;
+                        }
+                        .qq:hover {
+                            background-position: -39px -83px;
+                        }
+                    }
+                     .reg-foot-p{
+                        margin-top: 19px;
+                    }
+                }
+            }
+        }
+         
+        
+        .reg-success{
+            border: none;
+            background: #f9f9f9;
+            .row{
+                margin-top: 32px;
+                margin-bottom: 188px;
+                .col-xs-4{
+                padding-left: 206px;
+                padding-top: 15px;
+            }
+            .col-xs-5{
+                h3{
+                    color: #574337;
+                    margin-bottom: 13px;
+                };
+                p{
+                    font-weight: bold;
+                    color: #61524b;
+                    a{
+                        color: #c8a063;
+                    }
+                }
+            }
+            }
+            
+        }
+      
+    }
+}
+
+  @media all and (max-width: 1200px) {
+   .about{
+       width: 1230px;
+       margin: 0 auto;
+   }
+    
+}

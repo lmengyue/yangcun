@@ -1,60 +1,52 @@
-.navbar-head {
-  padding-top: 20px;
-}
-.navbar-head span {
-  color: #c8a063;
-}
-.navbar-head a {
-  text-decoration: none;
-  color: #D58512;
-}
-.navbar-head .login a,
-.navbar-head .resgister a {
-  color: #c8a063;
-  margin-left: 5px;
-}
-.navbar-head .login:hover,
-.navbar-head .resgister:hover {
-  color: #7c5a25;
-}
-.navbar-head .login:hover a,
-.navbar-head .resgister:hover a {
-  color: #7c5a25;
-  text-decoration: none;
-}
-.navbar-head .t a {
-  font-size: 20px;
-  margin: 0 10px;
-}
-.navbar-head ul {
-  border-top: 1px solid #f1dbbb;
-  margin-top: 10px;
-  padding-top: 10px;
-  margin-bottom: 0;
-}
-.navbar-head ul li {
-  display: inline-block;
-  padding: 0 5px;
-  margin: 0 22px 1px 22px;
-}
-.navbar-head ul li a {
-  display: block;
-  height: 44px;
-  font-size: 18px;
-  text-decoration: none;
-  color: #c8a063;
-}
-.navbar-head ul li a:hover {
-  color: #7c5a25;
-  text-decoration: none;
-}
-.navbar-head ul .active {
-  border-bottom: 4px solid #7c5a25;
-}
 .nav-search {
+  height: 596px;
   position: relative;
+  width: 100%;
+  overflow: hidden;
 }
-.nav-search div {
+.nav-search ul li {
+  display: none;
+}
+.nav-search ul li .banner-one {
+  background: url(../img/index/yc_web_banner_01.jpg) no-repeat;
+}
+.nav-search ul li .banner-two {
+  background: url(../img/index/yc_web_banner_02.jpg) no-repeat;
+}
+.nav-search ul li .banner-three {
+  background: url(../img/index/yc_web_banner_03.jpg) no-repeat;
+}
+.nav-search ul li a {
+  position: absolute;
+  width: 100%;
+  height: 596px;
+  background-position: center !important;
+}
+.nav-search .left {
+  width: 86px;
+  height: 86px;
+  position: absolute;
+  left: 10%;
+  top: 45%;
+  background: url("../img/index/qh_icon.png") no-repeat;
+  background-position: -6px -9px;
+}
+.nav-search .left:hover {
+  background-position: -101px -9px;
+}
+.nav-search .right {
+  width: 86px;
+  height: 86px;
+  position: absolute;
+  right: 10%;
+  top: 45%;
+  background: url("../img/index/qh_icon.png") no-repeat;
+  background-position: -6px -101px;
+}
+.nav-search .right:hover {
+  background-position: -101px -101px;
+}
+.nav-search .search {
   position: absolute;
   bottom: 50px;
   left: 50%;
@@ -62,28 +54,35 @@
   height: 45px;
   margin-left: -295px;
   background: #fff;
-  opacity: 0.4;
+  opacity: 0.6;
 }
-.nav-search div span {
-  line-height: 45px;
-  color: #c9a165;
-  margin-left: 25px;
-  transform: rotateY(180deg);
+.nav-search .search span {
+  display: block;
+  height: 45px;
+  width: 45px;
+  margin-left: 10px;
+  float: left;
+  background: url(../img/index/yc_icon_02.png) no-repeat;
+  background-position: -35px -46px;
 }
-.nav-search div input {
+.nav-search .search input {
+  float: left;
   margin-left: 20px;
-  width: 435px;
+  width: 418px;
   border: none;
-  border-right: 1px solid #f9e6ca;
+  margin-top: 12px;
+  border-right: 2px solid #f9e6ca;
 }
-.nav-search div button {
+.nav-search .search button {
   color: #c8a063;
   width: 86px;
+  float: left;
+  margin-top: 12px;
   text-align: center;
   border: none;
   background: none;
 }
-.nav-search div:hover {
+.nav-search .search:hover {
   opacity: 1;
 }
 .map {
@@ -100,12 +99,12 @@
   font-size: 30px;
 }
 .map .nav-title1 hr {
-  margin: 10px auto 80px;
-  width: 60px;
-  border: 3px solid #7c5a25;
+  margin: 10px auto 28px;
+  width: 114px;
+  border: 2px solid #7c5a25;
 }
 .map .nav-title1 p {
-  margin-bottom: 20px;
+  margin: 0;
   font-size: 16px;
 }
 .map .map-img {
@@ -131,6 +130,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  cursor: pointer;
   background: #59493f;
 }
 .map .map-img li div {
@@ -140,8 +140,8 @@
   height: 300px;
   padding: 20px;
   background: rgba(0, 0, 0, 0.6);
-  bottom: 48px;
-  left: -286px;
+  bottom: 40px;
+  left: -290px;
   border-radius: 14px;
   color: #fff;
   z-index: 99;
@@ -150,7 +150,7 @@
   width: 270px;
   height: 180px;
 }
-.map .map-img li div img:nth-child(4) {
+.map .map-img li div .map-img2 {
   float: right;
 }
 .map .map-img li div h3 {
@@ -158,61 +158,72 @@
   font-size: 18px;
 }
 .map .map-img li div p {
-  font-size: 15px;
+  font-size: 14px;
 }
 .map .map-img li div label {
   display: block;
   position: absolute;
-  bottom: -35px;
+  bottom: -37px;
   left: 284px;
   width: 0;
   height: 0;
   border: 16px solid;
   border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
 }
-.map .map-img .map_li1 {
-  top: 346px;
-  left: 272px;
+.map .map-img li .hover-show {
+  cursor: pointer;
 }
-.map .map-img .map_li2 {
-  top: 456px;
-  left: 296px;
+.map .map-img .map-li1 {
+  top: 352px;
+  left: 401px;
 }
-.map .map-img .map_li3 {
-  top: 530px;
-  left: 206px;
+.map .map-img .map-li2 {
+  top: 390px;
+  left: 358px;
 }
-.map .map-img .map_li4 {
-  top: 325px;
-  left: 530px;
+.map .map-img .map-li3 {
+  top: 466px;
+  left: 274px;
 }
-.map .map-img .map_li5 {
-  top: 322px;
-  left: 595px;
+.map .map-img .map-li4 {
+  top: 430px;
+  left: 592px;
 }
-.map .map-img .map_li6 {
-  top: 170px;
-  left: 740px;
+.map .map-img .map-li5 {
+  top: 342px;
+  left: 635px;
 }
-.map .map-img .map_li7 {
-  top: 286px;
-  left: 732px;
+.map .map-img .map-li6 {
+  top: 370px;
+  left: 674px;
 }
-.map .map-img .map_li8 {
-  top: 245px;
-  left: 858px;
+.map .map-img .map-li7 {
+  top: 561px;
+  left: 526px;
 }
-.map .map-img .map_li9 {
-  top: 242px;
-  left: 958px;
+.map .map-img .map-li8 {
+  top: 508px;
+  left: 657px;
 }
-.map .map-img .map_li10 {
-  top: 510px;
-  left: 716px;
+.map .map-img .map-li9 {
+  top: 261px;
+  left: 912px;
+}
+.map .map-img .map-li10 {
+  top: 553px;
+  left: 703px;
+}
+.map .map-img .map-li11 {
+  top: 460px;
+  left: 436px;
 }
 .map .map-img li:hover {
+  cursor: pointer;
   border: 2px solid #fff;
   background: rgba(255, 255, 255, 0.5);
+}
+.map .map-img li:hover div {
+  display: block;
 }
 .map .map-img li:hover span {
   background: #8fc31f;
@@ -231,8 +242,8 @@
 }
 .accommodation .nav-title2 hr {
   margin: 10px auto;
-  width: 60px;
-  border: 3px solid #7c5a25;
+  width: 113px;
+  border: 2px solid #7c5a25;
 }
 .accommodation .row {
   margin-bottom: 15px;
@@ -247,6 +258,7 @@
   height: 62px;
   line-height: 62px;
   position: absolute;
+  padding: 0 40px;
   font-size: 16px;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -256,10 +268,11 @@
   display: block;
   color: #d7d7d7;
   text-align: left;
-  margin: 0 auto;
-  width: 286px;
+  width: 100%;
   font-size: 14px;
-  line-height: 22px;
+  line-height: 25px;
+  overflow: hidden;
+  position: relative;
 }
 .accommodation .row div p a {
   display: block;
@@ -272,6 +285,13 @@
   color: #000;
   font-size: 18px;
   background: #c0996f;
+}
+.accommodation .row div .accommodation_text {
+  line-height: 26px;
+  height: 160px;
+}
+.accommodation .row div .accommodation-text {
+  height: 76px;
 }
 .accommodation button {
   margin: 20px 0;
@@ -311,21 +331,34 @@
   color: #868585;
   text-decoration: none;
 }
+.info .col-xs-6 {
+  padding: 0;
+  width: 546px;
+}
+.info .info-fr {
+  margin-left: 48px;
+}
+.info .fig {
+  display: block;
+  padding-left: 10px;
+  height: 160px;
+}
 .info .fig img {
-  width: 52%;
-  height: 128px;
+  width: 240px;
+  height: 160px;
 }
 .info .fig .figc {
-  padding: 0 24px;
-  width: 48%;
-  height: 128px;
+  width: 55%;
+  height: 160px;
+  padding: 0 15px ;
   color: #c8a063;
 }
 .info .fig .figc h2 {
-  font-size: 22px;
+  font-size: 17px;
 }
-.info .fig .figc h2 span {
-  font-size: 16px;
+.info .fig .figc hr {
+  margin: 10px 0;
+  border-color: #d2d2d2 ;
 }
 .info .fig .figc:hover {
   background: #f4f0ec;
@@ -335,70 +368,47 @@
   display: block;
   clear: both;
 }
+.info ul {
+  cursor: pointer;
+  margin-top: 10px ;
+}
 .info ul li {
   padding: 18px 0 14px;
   border-bottom: 1px solid #bbaa8f;
 }
-.info ul li p {
+.info ul li a {
   color: #626262;
   font-size: 16px;
   display: inline-block;
   width: 75%;
+  text-decoration: none;
 }
 .info ul li h5 {
   margin: 0;
   color: #7c5a25;
   font-size: 14px;
 }
-.info ul li:hover p {
-  color: #101010;
+.info ul li:hover a {
+  color: #4a3d35;
   font-weight: bold;
 }
-.foot {
-  padding: 45px 0 20px;
-  color: #fff;
-  background: #867971;
-}
-.foot a,
-.foot a:hover {
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-}
-.foot h4 {
-  font-size: 22px;
-  font-weight: 900;
-  margin-bottom: 20px;
-}
-.foot .contact {
-  display: flex;
-  align-items: center;
-}
-.foot .contact div {
-  display: inline-block;
-  width: 110px;
-  height: 80px;
-  background: url("../img/yc_icon_02.png") no-repeat;
-  background-position: -10px -100px;
-}
-.foot .contact span {
-  display: inline-block;
-  font-size: 16px;
-  width: 140px;
-}
-.foot hr {
-  width: 640px;
-  margin: 40px auto 14px;
+@media all and (max-width: 1200px) {
+  .info,
+  .map,
+  .nav-search {
+    width: 1230px;
+    margin: 0 auto;
+  }
 }
 .toTop {
   position: fixed;
   bottom: 80px;
-  right: 40px;
+  right: 100px;
   display: block;
   width: 80px;
   height: 70px;
   display: none;
-  background: url("../img/yc_icon_02.png") no-repeat;
+  background: url("../img/index/yc_icon_02.png") no-repeat;
   background-position: -7px -210px;
 }
 .toTop:hover {

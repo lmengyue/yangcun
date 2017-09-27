@@ -1,0 +1,51 @@
+.foot {
+  padding: 45px 0 20px;
+  color: #fff;
+  background: #867971;
+}
+.foot .row {
+  padding: 0;
+}
+.foot li {
+  width: 80px;
+}
+.foot a {
+  color: #fff;
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  width: 66px;
+  font-size: 16px;
+}
+.foot a:hover {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #fff;
+}
+.foot h4 {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+.foot .contact {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  vertical-align: middle;
+}
+.foot .contact .tel {
+  display: inline-block;
+  width: 120px;
+  height: 80px;
+  background: url("../img/index/yc_icon_02.png") no-repeat;
+  background-position: -10px -100px;
+}
+.foot .contact span {
+  display: inline-block;
+  font-size: 16px;
+  width: 180px;
+}
+.foot hr {
+  width: 640px;
+  margin: 40px auto 14px;
+}

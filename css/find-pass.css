@@ -1,0 +1,94 @@
+.about {
+  background: #f9f9f9;
+}
+.about .about-detail {
+  padding: 34px 80px 60px 90px;
+}
+.about .about-detail .about-ul {
+  border-bottom: 2px solid #6e615b;
+  padding: 4px;
+  margin-bottom: 5px;
+}
+.about .about-detail .about-ul li {
+  display: inline-block;
+  font-size: 15px;
+  padding: 0 6px;
+  cursor: pointer;
+}
+.about .about-detail .about-ul li a {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: url(../img/about/home_icon.png) no-repeat;
+  background-position: -15px -4px;
+  transition: .3s;
+}
+.about .about-detail .about-ul li a:hover {
+  background-position: -50px -4px;
+}
+.about .about-detail .about-ul .home {
+  height: 24px;
+  padding: 0;
+  padding-top: 5px;
+}
+.about .about-detail .find-pass {
+  padding-left: 200px ;
+  margin-top: 68px;
+}
+.about .about-detail .find-pass ul {
+  border-bottom: 1px solid #eee ;
+  height: 35px;
+  padding-left: 96px;
+}
+.about .about-detail .find-pass ul li {
+  display: inline-block;
+  margin-right: 3px;
+}
+.about .about-detail .find-pass ul li a {
+  color: #000 ;
+  display: inline-block;
+  padding: 7px 20px 6px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  border: 1px solid #eee;
+  border-bottom: none;
+  background: #fff;
+}
+.about .about-detail .find-pass ul .emil a {
+  background: #e5e5e5;
+}
+.about .about-detail .find-form {
+  padding-left: 320px;
+  margin-bottom: 82px;
+}
+.about .about-detail .find-form h5 {
+  font-size: 15px;
+  font-weight: bold;
+}
+.about .about-detail .find-form p {
+  font-size: 16px;
+}
+.about .about-detail .find-form form input {
+  width: 240px;
+  height: 30px;
+}
+.about .about-detail .find-form form .button {
+  width: 150px;
+  height: 35px;
+  background: #c8a063;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.about .about-detail .find-form form .button:hover {
+  background: #6e615b;
+}
+@media all and (max-width: 1200px) {
+  .about {
+    width: 1230px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,646 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+		<title>阳村</title>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css?5" />
+		<link rel="stylesheet" type="text/css" href="../css/head-footer.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../css/booking.css?3" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../components/bootstrap/css/bootstrap.min.css" />
+			<link rel="stylesheet" type="text/css" href="../components/font-awesome/css/font-awesome.css" />	
+		<script src="../components/datepicker/WdatePicker.js" type="text/javascript"></script>
+
+		<style type="text/css">
+			body {
+				font-family: Microsoft YaHei;
+			}
+		</style>
+
+		<script type="text/javascript">
+		</script>
+	</head>
+
+	<body>
+		<div class="navbar-head" id="toTop">
+			<div class="container">
+				<div class="row">
+					<a href="../index.html" target="_parent" class="col-xs-5 logo-img">
+						<img src="../img/index/logo_1.png" />
+					</a>
+					<div class="col-xs-7 nav-head">
+						<div class="row login-ok">
+							<div class="col-xs-12">
+								<span class="name">
+									<span>liumengyu</span>
+									您好！
+								</span>
+								<!--<span class="upgrade">
+									<a href="" target="_parent" >升级为高级会员</a>
+								</span>-->
+								<span class="personal">
+									<a href="" target="_parent" >我的个人中心</a>
+								</span>
+								<span class="tt">|</span>
+								<span class="out">
+									<a href="" target="_parent">退出</a>
+								</span>
+								<span class="order">
+									<a href="" target="_parent">查看我的订单</a>
+								</span>
+							</div>
+							<div class="nav-ul">
+							<ul class="col-xs-12 nav-li">
+								<li class="offset">
+									<a href="../index.html" target="_parent">首页</a>
+								</li>
+								<li>
+									<a href="activ.html" target="_parent">走进阳村</a>
+								</li>
+								<li class="active">
+									<a href="booking.html"target="_parent">民宿预订</a>
+								</li>
+								<li>
+									<a href="gift.html"target="_parent">伴手选礼</a>
+								</li>
+								<li>
+									<a href="news.html"target="_parent">新闻资讯</a>
+								</li>
+							</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="booking">
+			<div class="container">
+				<div class="row">
+					<ul class="col-xs-12 booking-ul">
+						<li class="home">
+						<a href="../index.html" target="_parent"></a>
+						</li>
+						<li>></li>
+						<li>民宿预订</li>
+						<li>></li>
+						<li>无锡鸣珂里桃花源精品酒店</li>
+					</ul>
+					<div class="col-xs-12 mingkeli">
+						<div class="mingkeli-box1-img">
+							<div class="img">
+								<img src="../img/index/msyd_web_02.jpg" style="display: block" />
+								<img src="../img/index/msyd_web_02.jpg" />
+							</div>
+							<div class="ltr">
+								<span class="left">&lt;</span>
+								<span class="right">&gt;</span>
+							</div>
+						</div>
+						<div class="mingkeli-box2-img">
+							<div class="box2-img">
+								<img src="../img/index/msyd2_web_05.jpg" class="img-right" />
+								<img src="../img/index/msyd2_web_07.jpg" />
+							</div>
+							<div class="box2-img">
+								<img src="../img/index/msyd2_web_11.jpg" class=" img-right" />
+								<img src="../img/index/msyd2_web_12.jpg" />
+							</div>
+							<div class="text-img">
+								<p>无锡鸣珂里桃花源精品酒店图片30张</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 mingkeli-type">
+						<ul class="mingkeli-type-time">
+							<li class="active">房型</li>
+							<li><a href="#minsu">民宿信息</a></li>
+							<li><a href="#dianp">民宿点评</a></li>
+							<li class="in">
+								<label>入住时间</label>
+								<input id="d5221" class="Wdate mini_w" type="text" size="10" value="" onFocus="var d5222=$dp.$('d5222');
+								WdatePicker({
+								onpicked:function()
+								{
+								    d5222.focus();
+								    oneDay();
+								    
+								},
+								   doubleCalendar:true, <!--//true双日历开启-->
+								    maxDate:'',<!--//最大日期-->
+								    minDate:'%y-%M-{%d}'
+								})" readonly="readonly" />
+							</li>
+							<li class="in go">
+								<label>离店时间</label>
+								<input id="d5222" style="color: #000;font-weight: 100" class="Wdate mini_w" type="text" size="10" value="" onFocus="WdatePicker
+                                ({ 
+								    minDate:'#F{$dp.$D(\'d5221\',{d:1})}',
+								    doubleCalendar:true,
+								    maxDate:'',
+								    onpicked:function()
+								    {
+								    	changeTime();
+								    }
+								})" readonly />
+
+							</li>
+							<li class="with">
+								共
+								<span class="day-time">1</span> 晚
+							</li>
+							<li class="confirm">
+								<a href="JavaScript:void(0)" onclick="getHouse()">确认修改</a>
+							</li>
+						</ul>
+						<div style="text-align: center;">
+							<span class="fa fa-spinner fa-spin" style="display: none;font-size: 30px;"></span>
+						</div>
+						
+						<div class="Room-type-box">
+							<ul class="Room-type-nav">
+								<li></li>
+								<li>床型</li>
+								<li>早餐</li>
+								<li>宽带</li>
+								<li>取消政策</li>
+								<li>价格</li>
+							</ul>
+							<table id="table">
+								<!--<tr>
+								<td class="first">
+									<img src="../img/index/msyd2_web_17.jpg" />
+									<div class="type-hover">
+										<label></label>
+									   <img src="../img/index/msyd2_web_03_hver.jpg" alt="" />
+									   <img src="../img/index/msyd2_web_05_hver.jpg" alt="" />
+									   <img src="../img/index/msyd2_web_07_hver.jpg" alt="" />
+									   <span>最多可住2人  |  可加床：是   |  建筑面积：31平米   |   特色：禅意/亲自</span>
+									</div>
+								</td>
+								<td class="type">大床房</td>
+								<td class="breakfast">双早</td>
+								<td class="wi-fi">免费无线</td>
+								<td class="refund">不可退款</td>
+								<td class="money">￥890</td>
+								<td class="btn">
+									<a href="#">预订</a>
+								</td>
+								</tr>
+							
+							<tr>
+								<td class="first">
+									<img src="../img/index/msyd2_web_20.jpg" />
+								</td>
+								<td class="type">大床房</td>
+								<td class="breakfast">双早</td>
+								<td class="wi-fi">免费无线</td>
+								<td class="refund">不可退款</td>
+								<td class="money">￥890</td>
+								<td class="btn">
+									<a href="#">预订</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="first">
+									<img src="../img/index/msyd2_web_22.jpg" />
+								</td>
+								<td class="type">大床房</td>
+								<td class="breakfast">双早</td>
+								<td class="wi-fi">免费无线</td>
+								<td class="refund">不可退款</td>
+								<td class="money">￥890</td>
+								<td class="btn">
+									<a href="#">预订</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="first">
+									<img src="../img/index/msyd2_web_24.jpg" />
+								</td>
+							   <td class="type">大床房</td>
+								<td class="breakfast">双早</td>
+								<td class="wi-fi">免费无线</td>
+								<td class="refund">不可退款</td>
+								<td class="money">￥890</td>
+								<td class="btn">
+									<a href="#">预订</a>
+								</td>
+							</tr>-->
+							</table>
+						</div>
+					</div>
+					<div class="col-xs-12 minsu-list" id="minsu">
+						<h3>民宿信息</h3>
+						<div class="jianjie">
+							<table>
+								<tr>
+									<td class="jianjie-title">民宿简介</td>
+									<td class="text-list"><p>
+<pre>浮生如梦，为欢几何？
+浮生如梦，为欢几何？
+有美庐居于阳山，屋舍六椽，书房一间，花田半亩。
+篱用竹编，墙以藤引；
+有廊有厢，地极幽静；
+亭榭窗栏尽从朴素。
+鲜菱雪藕，风晴雨露；
+柴火煎茶，暖酒烹肴；
+烟火人间有味是清欢。
+
+风生竹院，倚窗对月；
+登舟解缆，桃李争妍；
+诗书为伴不觉人生寒。
+桃源一见寻，但期合意，不论风水，无关风月。
+春风一杯酒，襟怀高旷，此心安处是吾乡。
+美庐，等你回家。</pre>		
+										    
+									</p>
+										
+									</td>
+								</tr>
+							</table>
+							
+						</div>
+                        <hr style="width:1000px;margin: 20px auto;" />
+						<div class="jianjie time">
+							<table>
+								<tr>
+									<td class="jianjie-title">入离店时间</td>
+									<td class="text-list">入住时间：14:00以后	<span>  |  </span> 离店时间：12:00之前<span>  |  </span>儿童政策：不接受18岁以下客人单独入住。 </td>
+								</tr>
+								
+							</table>
+							
+						</div>
+						
+							 <hr style="width:1000px;margin: 20px auto;" />
+				
+                       
+						<div class="shes">
+							<h4>配套设施</h4>
+							<div class="shes-text">
+								<table class="shes-text_table">
+									<tr>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="tilte-td" >基础设施</td>
+										<td>
+											<ul>
+												<li>有可无线上网的公共区域免费</li>
+												<li>中餐厅 </li>
+												<li>酒吧</li>
+												<li>大堂吧</li>
+												<li>中央空调</li>
+												<li>公共音响系统 </li>
+												<li>非经营性客人休息区 </li>
+												<li>多媒体演示系统</li>
+												<li>公共区域闭路电视监控系统 </li>
+												<li>免费停车场</li>
+										     </ul>
+										</td>
+										</tr>
+								</table>
+                               <hr />
+								<table class="shes-text_table">
+									<tr>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="tilte-td" >活动设施</td>
+										<td>
+											<ul>
+												<li>有可无线上网的公共区域免费</li>
+												<li>中餐厅 </li>
+												<li>酒吧</li>
+												<li>大堂吧</li>
+												<li>中央空调</li>
+												<li>公共音响系统 </li>
+												<li>非经营性客人休息区 </li>
+												<li>多媒体演示系统</li>
+												<li>公共区域闭路电视监控系统 </li>
+												<li>免费停车场</li>
+										     </ul>
+										</td>
+										</tr>
+								</table>
+								<hr />
+								<table class="shes-text_table">
+									<tr>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="tilte-td" >活动设施</td>
+										<td>
+											<ul>
+												<li>有可无线上网的公共区域免费</li>
+												<li>中餐厅 </li>
+												<li>酒吧</li>
+												<li>大堂吧</li>
+												<li>中央空调</li>
+												<li>公共音响系统 </li>
+										
+										     </ul>
+										</td>
+										</tr>
+								</table>
+								<hr />
+								<table class="shes-text_table">
+									<tr>
+										<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="tilte-td" >客房设施</td>
+										<td>
+											<ul>
+												<li>有可无线上网的公共区域免费</li>
+												<li>中餐厅 </li>
+												<li>酒吧</li>
+												<li>大堂吧</li>
+												<li>中央空调</li>
+												<li>公共音响系统 </li>
+												<li>非经营性客人休息区 </li>
+												<li>多媒体演示系统</li>
+												<li>公共区域闭路电视监控系统 </li>
+												<li>免费停车场</li>
+												<li>公共音响系统 </li>
+												<li>非经营性客人休息区 </li>
+												<li>多媒体演示系统</li>
+												<li>公共区域闭路电视监控系统 </li>
+												<li>免费停车场</li>
+												<li>公共音响系统 </li>
+												<li>非经营性客人休息区 </li>
+												<li>多媒体演示系统</li>
+												<li>公共区域闭路电视监控系统 </li>
+												<li>免费停车场</li>
+												<li>公共音响系统 </li>
+												<li>非经营性客人休息区 </li>
+												<li>多媒体演示系统</li>
+												<li>公共区域闭路电视监控系统 </li>
+										     </ul>
+										</td>
+										</tr>
+								</table>
+								<hr />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-12 dianpin" id="dianp">
+						<h3>咨询点评</h3>
+						<div class="dianpin-who">
+							<table class="liuyan">
+							<tr>
+								<td class="name_style">
+									<i><img src="../img/index/msyd_icon-1.png"/></i>
+									<span><a href="#">你的名字</a></span>
+								</td>
+								<td class="text_style">
+									<div class="text-us">
+										<p>我没有想说的其实 我喜欢现在的生活</p>
+									</div>
+									<div class="text-me">
+										<p>尊敬的客户你好 ，我不想回答你的问题</p>
+									</div>
+
+								</td>
+							</tr>
+							<tr>
+								<td class="name_style">
+									<i><img src="../img/index/msyd_icon-1.png"/></i>
+									<span><a href="#">你的名字</a></span>
+								</td>
+								<td class="text_style">
+									<div class="text-us">
+										<p>我没有想说的其实 我喜欢现在的生活</p>
+									</div>
+									
+
+								</td>
+							</tr>					
+							</table>
+						</div>
+						<div class="dianpin-sub">
+							<ul>
+								<li class="avatar"></li>
+								<li></li>
+								<li>您好 ，欢迎你的光临！</li>
+								<li>
+									<a href="">[退出]</a>
+								</li>
+							</ul>
+							<i>留言内容：（500字以内）</i>
+							<form class="sub">
+								<textarea id="ly"></textarea>
+								<input type="submit" value="确认，提交" onclick="sub()" />
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+   	<a href="#toTop" class="toTop" id="toTop-go"></a>
+		<div class="foot">
+			<div class="footer-row">
+					<table>
+						<tr>
+							<th>关于我们</th>	
+							<th>阳村招商</th>
+							<th>常见问题</th>
+							<th>合作伙伴</th>
+						</tr>
+						<tr>
+							<td>
+								<a href="about-contact.html" target="_parent">联系我们</a>
+							</td>
+							<td>
+								<a href="zhaoshang.html" target="_parent">招商政策</a>
+							</td>
+							<td>
+								<a href="yuding.html" target="_parent">预订流程</a>
+							</td>
+							<td>
+								<a href="">旅游情报</a>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>
+								<a href="about.html" target="_parent">公司简介</a>
+							</td>
+							<td>
+								<a href="zhaoshang-login.html" target="_parent">在线报名</a>
+							</td>
+							<td>
+								<a href="problem.html"target="_parent">Q&A</a>
+							</td>
+							<td>
+								
+							</td>
+						</tr>
+					
+					</table>	
+
+				<div class="contact ">
+					<span class="tel"></span>
+					<span>咨询电话<br />40000-96828</span>
+					<img src="../img/index/jthomt_13.jpg"/>
+				</div>
+			</div>
+			<hr/>
+			<p class="text-center">CopyRight&nbsp;&copy;&nbsp;上海智汇乡创旅游发展有限公司 沪ICP备13045608号-1</p>
+		</div>
+
+	</body>
+	<script src="../components/jQuery/jquery-1.12.4.min.js" type="text/javascript"></script>
+	<!--<script src="../components/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+	<!--<script src="../components/bootstrap/js/html5shiv.js" type="text/javascript"></script>-->
+	<script src="../components/bootstrap/js/respond.js" type="text/javascript"></script>
+
+	<!--<script src="../components/placeholder/jquery.placeholder.min.js" type="text/javascript"></script>-->
+	<script type="text/javascript">
+		$(function() {
+			//点击回顶部
+				// .toTop
+		$(document).scroll(function() {
+			var y = $(window).scrollTop();
+			if(y > 400) {
+				$('.toTop').fadeIn(200);
+			} else {
+				$('.toTop').fadeOut(200);
+			}
+		});
+			
+			
+			$('.paging ul li').click(function() {
+				$(this).addClass('paging-active').siblings().removeClass('paging-active');
+			});
+
+			//r轮播tu
+			var i = 0
+
+			function move() {
+				i++;
+				if(i > 1) {
+					i = 0;
+				}
+				$('.mingkeli-box1-img .img img ').eq(i).stop().fadeIn(2000).siblings().stop().fadeOut(2000);
+			}
+			time = setInterval(move, 3000)
+			$('.mingkeli-box1-img').hover(function() {
+				clearInterval(time);
+			}, function() {
+				time = setInterval(move, 3000);
+			})
+			$('.ltr .left').click(function() {
+				i -= 2;
+				move();
+			})
+			$('.ltr .right').click(function() {
+				move();
+			})
+
+		})
+
+		function p(s) {
+			return s < 10 ? '0' + s : s;
+		}
+		//获取当前时间  开始时间加一天
+		var myDate = new Date();
+		var year = myDate.getFullYear();
+		var month = myDate.getMonth() + 1;
+		var date = myDate.getDate();
+		var now = year + '-' + p(month) + "-" + p(date);
+		$('#d5221').val(getNextDay(now));
+		$('#d5222').val(getNextDay(getNextDay(now)));
+
+		//结束日期自动加一天
+		function oneDay() {
+			var ksdate = $('#d5221').val();
+			$('#d5222').val(getNextDay(ksdate));
+		}
+            //计算日期自动加一天的函数  ，通用
+		function getNextDay(d) {
+			d = new Date(d);
+			d = +d + 1000 * 60 * 60 * 24;
+			d = new Date(d);
+			return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+
+		}
+
+		//计算天数差的函数，通用  
+		function DateDiff(sDate1, sDate2) { //sDate1和sDate2是2002-12-18格式  
+			var aDate, oDate1, oDate2, iDays
+			aDate = sDate1.split("-")
+			oDate1 = new Date(aDate[1] + '-' + aDate[2] + '-' + aDate[0]) //转换为12-18-2002格式  
+			aDate = sDate2.split("-")
+			oDate2 = new Date(aDate[1] + '-' + aDate[2] + '-' + aDate[0])
+			iDays = parseInt(Math.abs(oDate1 - oDate2) / 1000 / 60 / 60 / 24) //把相差的毫秒数转换为天数  
+			return iDays;
+
+		}
+		//判断选着日期是不是超过20天
+		function changeTime() {
+			var ksdate = $('#d5221').val();
+			var stopdate = $('#d5222').val();
+			$('.day-time').html(DateDiff(ksdate, stopdate));
+			if(DateDiff(ksdate, stopdate) >= 20) {
+				alert("如果你要入住满20天以上，请到电4000096828酒店客服，我们将竭诚为你服务！");
+			}
+		}
+		//日期输出房态
+		function getHouse() {
+			var hotelid='61040';
+			var start_date=$("#d5221").val();
+			var end_date =$("#d5222").val();
+			$('.fa-spinner').show();
+			$('.Room-type-box').hide();
+			setTimeout(function(){
+				$.ajax({
+					url: 'http://www.yangvillage.com/action/getdata.php?type=2&hotelid='+hotelid+'&comedate='+start_date+'&leavedate='+end_date, // 跳转到 action
+					data: {},
+					type: 'get',
+					async: true,
+					dataType: 'text',
+					success: function(data) {
+						var house = eval(data);
+						console.log(house)
+						var tablebox = "";
+						for(var i = 0; i < house.length; i++) {
+							tablebox += "<tr>";
+							tablebox += "<td class='first'><img src=" + house[i].fx_url + house[i].fx_pic_first_tiny + ">";
+							tablebox += "<div class='type-hover'><label></label><img src=" + house[i].fx_url + house[i].fx_pic[1] + "><img src=" + house[i].fx_url + house[i].fx_pic[2] + "><img src=" + house[i].fx_url + house[i].fx_pic[3] + ">";
+							tablebox += "<span>" + house[i].fx_info_total + "</span>";
+							tablebox += "</div>";
+							tablebox += "</td>";
+							tablebox += "<td class='type'>" + house[i].fx_name + "</td>";
+							tablebox += "<td class='breakfast'>" + house[i].fx_zc + "</td>";
+							tablebox += "<td class='wi-fi'>" + house[i].fx_kd + "</td>";
+							tablebox += "<td class='refund'>不可取消</td>";
+							tablebox += "<td class='money'>" + house[i].fx_jg + "</td>";
+							if(house[i].fx_mf_mark == 0) {
+								tablebox += "<td class='btn-b'><a href='order.html?start_date="+start_date+"&end_date="+end_date+"&hotelid="+hotelid+"&fx_id="+house[i].fx_id+"&fxcode="+house[i].fxcode+house[i].fx_id+"&type=1&type_txt="+house[i].fxcode+"'>预订</a></td>";
+							} else if(house[i].fx_mf_mark == 1) {
+								tablebox += "<td class='btn-a'><a href='JavaScript:void(0)'>满房</a></td>";
+							}
+							tablebox += "</tr>";
+	
+						}
+						$('#table').html(tablebox);
+					},
+					error: function(data) {
+						// view("异常！")
+						if(data.status == "404") {
+							alert("文件不存在!");
+						} else if(data.status == "500") {
+							alert("文件编译错误!");
+						} else {
+							alert("系统错误!");
+						}
+					}
+				});
+				$('.fa-spinner').hide();
+				$('.Room-type-box').show();
+			},300)	
+		}
+		getHouse();
+      
+       
+	</script>
+
+</html>

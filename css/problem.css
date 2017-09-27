@@ -1,0 +1,111 @@
+.about {
+  background: #f9f9f9;
+}
+.about .about-detail {
+  padding: 34px 88px 60px 82px;
+}
+.about .about-detail .about-ul {
+  border-bottom: 2px solid #6e615b;
+  padding: 4px;
+  margin-bottom: 5px;
+}
+.about .about-detail .about-ul li {
+  display: inline-block;
+  font-size: 15px;
+  padding: 0 6px;
+  cursor: pointer;
+}
+.about .about-detail .about-ul li a {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: url(../img/about/home_icon.png) no-repeat;
+  background-position: -15px -4px;
+  transition: .3s;
+}
+.about .about-detail .about-ul li a:hover {
+  background-position: -50px -4px;
+}
+.about .about-detail .about-ul .home {
+  height: 24px;
+  padding: 0;
+  padding-top: 5px;
+}
+.about .about-detail .about-text {
+  padding: 0;
+  margin-top: 36px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-top: none ;
+}
+.about .about-detail .about-text h2 {
+  line-height: 58px;
+  margin: 0;
+  padding-left: 25px;
+  font-size: 25px;
+  color: #636363;
+  background: #efefef ;
+  border: 1px solid #dcdcdc;
+}
+.about .about-detail .about-text .row {
+  padding: 30px 40px 63px;
+}
+.about .about-detail .about-text .row .col-xs-12 {
+  padding: 0;
+  height: 63px;
+  padding: 16px 0 16px;
+  overflow: hidden;
+  cursor: pointer;
+  border-bottom: 1px dashed #636363;
+}
+.about .about-detail .about-text .row .col-xs-12 div {
+  height: 25px;
+  color: #636363;
+  font-size: 15px;
+  text-indent: 2.5em;
+  background: url(../img/about/QA_iocn.png) no-repeat;
+  background-position: -6px -7px;
+}
+.about .about-detail .about-text .row .col-xs-12 p {
+  background: url(../img/about/QA_iocn.png) no-repeat;
+  background-position: -6px -41px;
+  font-size: 15px;
+  margin-top: 19px;
+}
+.about .about-detail .about-text .row .col-xs-12 p span {
+  display: block;
+  width: 93%;
+  color: #636363;
+  height: 45px;
+  margin-left: 35px;
+}
+.about .about-detail .about-text .row .col-xs-12 p a {
+  display: block;
+  color: #000;
+  float: right;
+}
+.about .about-detail .about-text .row .yuding-div {
+  cursor: auto;
+}
+.about .about-detail .yuding .yuding-row {
+  padding-top: 0 !important ;
+}
+.about .about-detail .yuding .yuding-div {
+  height: auto !important;
+  border-bottom: 1px dashed #b2b2b2 !important;
+}
+.about .about-detail .yuding .yuding-div h4 {
+  font-size: 17px;
+  color: #c8a063;
+}
+.about .about-detail .yuding .yuding-div p {
+  background: #fff !important;
+  font-size: 13px !important;
+  padding: 0 20px;
+}
+@media all and (max-width: 1200px) {
+  .about {
+    width: 1230px;
+    margin: 0 auto;
+  }
+}

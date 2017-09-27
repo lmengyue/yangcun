@@ -1,0 +1,141 @@
+.navbar-head {
+  padding-top: 10px;
+  background: #fff;
+}
+.navbar-head span {
+  color: #c8a063;
+}
+.navbar-head a {
+  text-decoration: none;
+  color: #c8a063;
+}
+.navbar-head .nav-head {
+  margin-top: 13px;
+}
+.navbar-head .nav-head .col-sm-offset-8 {
+  width: 224px;
+}
+.navbar-head .nav-head .login {
+  display: inline-block;
+  width: 50px;
+  height: 18px;
+  margin-left: 22px;
+  background: url("../img/index/yc_icon_02.png") no-repeat;
+  background-position: -15px -7px;
+  transition: 0.3s;
+}
+.navbar-head .nav-head .login a {
+  margin-left: 20px;
+  background: #fff;
+  text-decoration: none;
+}
+.navbar-head .nav-head .login:hover {
+  background: url("../img/index/yc_icon_02.png") no-repeat;
+  background-position: -45px -7px;
+}
+.navbar-head .nav-head .login:hover a {
+  color: #7c5a25;
+}
+.navbar-head .nav-head .resgister {
+  display: inline-block;
+  width: 50px;
+  height: 18px;
+  background: url("../img/index/yc_icon_02.png") no-repeat;
+  background-position: -15px -30px;
+  transition: 0.3s;
+}
+.navbar-head .nav-head .resgister a {
+  margin-left: 20px;
+  background: #fff;
+  text-decoration: none;
+}
+.navbar-head .nav-head .resgister:hover {
+  background: url("../img/index/yc_icon_02.png") no-repeat;
+  background-position: -44px -30px;
+}
+.navbar-head .nav-head .resgister:hover a {
+  color: #7c5a25;
+}
+.navbar-head .nav-head .t {
+  font-size: 18px;
+  margin: 0 8px;
+}
+.navbar-head .nav-head ul {
+  border-top: 1px solid #f1dbbb;
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+.navbar-head .nav-head ul li {
+  display: inline-block;
+  padding: 0 5px;
+  margin: 0 22px 1px 22px;
+}
+.navbar-head .nav-head ul li a {
+  display: block;
+  height: 40px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #c8a063;
+}
+.navbar-head .nav-head ul li a:hover {
+  color: #7c5a25;
+  text-decoration: none;
+}
+.navbar-head .nav-head ul .active {
+  border-bottom: 3px solid #7c5a25;
+}
+.navbar-head .nav-head ul .offset {
+  margin-left: 42px;
+}
+.foot {
+  padding: 45px 0 20px;
+  color: #fff;
+  background: #867971;
+}
+.foot .row {
+  padding: 0;
+}
+.foot li {
+  width: 80px;
+}
+.foot a {
+  color: #fff;
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  width: 66px;
+  font-size: 16px;
+}
+.foot a:hover {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #fff;
+}
+.foot h4 {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+.foot .contact {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  vertical-align: middle;
+}
+.foot .contact .tel {
+  display: inline-block;
+  width: 120px;
+  height: 80px;
+  background: url("../img/index/yc_icon_02.png") no-repeat;
+  background-position: -10px -100px;
+}
+.foot .contact span {
+  display: inline-block;
+  font-size: 16px;
+  width: 180px;
+}
+.foot hr {
+  width: 640px;
+  margin: 40px auto 14px;
+}
